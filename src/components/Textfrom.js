@@ -1,26 +1,25 @@
 import React from 'react'
 import {useState} from 'react';
 export default function Textfrom(props) {
-  const[text,newText]=useState('Enter text here');
+  const[text,newText]=useState('');
   let updateText1 =() =>{
    let rex=text.toUpperCase();
    newText(rex);
-   
-   
   }
 
   let updateText2 =() =>{
     let rex=text.toLowerCase();
-    newText(rex);
-    
-    
+    newText(rex); 
    }
-
+   let updateText3 =() =>{
+    newText(" ")
+   }
   const handleOnChange =(event) =>{
     console.log("On change");
     newText(event.target.value);
   }
   
+
   return (
     <>
     <div className="container">
@@ -30,7 +29,7 @@ export default function Textfrom(props) {
     </div>
     <button className="btn btn-primary" onClick={updateText1}>Convert to upper case</button>
     <button className="btn btn-primary mx-3" onClick={updateText2}>Convert to lower case</button>
-   
+    <button className="btn btn-primary " onClick={updateText3}>Clear</button>
     </div>
     <div className="container">
       <h1 className='my-4'>Your Text Summary</h1>
