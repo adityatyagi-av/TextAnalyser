@@ -7,17 +7,29 @@ import React, { useState } from 'react'
 
 
 function App() {
-  const [mode1,setMode] = useState("light"); //Whether the dark mode is enabled or not
+  const [mode1,setMode] = useState('light'); //Whether the dark mode is enabled or not
   const darkMode =()=>{
-    setMode('dark')
+   if(mode1==="light"){
+    setMode('dark');
+    document.body.style.backgroundColor ="rgb(36, 35, 35)";
+    document.body.style.color ="white";    
+    document.querySelector("h2").style.color="white";
+  }
+   else{
+    setMode('light');
+    document.body.style.backgroundColor ="white";
+    document.body.style.color ="black"; 
+    document.querySelector("h2").style.color="black";
+    
+   }
   }
   return (
-    <div className="App">
+    <div className={`App ${mode1}`}>
      <div>
      
-      <Navbar title="TextUtils" hometext="Home" abouttext="About us" mode={mode1}/>
+      <Navbar title="TextAnalyser" hometext="Home" abouttext="About us" mode={mode1} toggleMode={darkMode}/>
       <div className="container my-3">
-      <Textfrom heading= "Enter the text to analyse"/>
+      <Textfrom heading= "Enter the text to analyse" mode={mode1}/>
       </div>
       <About/>
        </div>

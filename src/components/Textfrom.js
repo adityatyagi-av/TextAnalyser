@@ -1,5 +1,7 @@
-import React from 'react'
-import {useState} from 'react';
+import React,{useState} from 'react';
+import PropTypes from 'prop-types';
+
+
 export default function Textfrom(props) {
   const[text,newText]=useState('');
   let updateText1 =() =>{
@@ -22,21 +24,21 @@ export default function Textfrom(props) {
 
   return (
     <>
-    <div className="container">
+    <div className="container" style={{color: props.mode==='light'?'black':'white'}}>
         <h1>{props.heading}</h1>
     <div className="mb-3">
-     <textarea className="form-control" id="exampleFormControlTextarea1" rows="8" value={text} onChange={handleOnChange}></textarea>
+     <textarea className="form-control" style={{backgroundColor: props.mode==='light'?'white':'grey' , color: props.mode==='light'?'black':'white'}} id="exampleFormControlTextarea1" rows="8" value={text} onChange={handleOnChange}></textarea>
     </div>
     <button className="btn btn-primary" onClick={updateText1}>Convert to upper case</button>
     <button className="btn btn-primary mx-3" onClick={updateText2}>Convert to lower case</button>
     <button className="btn btn-primary " onClick={updateText3}>Clear</button>
     </div>
-    <div className="container">
+    <div className="container my-3">
       <h1 className='my-4'>Your Text Summary</h1>
       <p>Your text have {text.split(' ').length} words and {text.length} characters</p>
       <p>{0.008* text.split(' ').length} Minutes read</p>
       <h2 className="my-3">Preview</h2>
-      <p>{text}</p>
+      <p className='my-3'>{text.length>0?text:"Enter something to preview it here"}</p>
     </div>
     </>
   )
