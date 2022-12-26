@@ -5,7 +5,12 @@ import Navbar from './components/Navbar';
 import Textfrom from './components/Textfrom';
 import React, { useState } from 'react'
 import Alert from './components/Alert';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   const [mode1,setMode] = useState('light'); //Whether the dark mode is enabled or not
@@ -27,6 +32,7 @@ function App() {
     document.body.style.backgroundColor ="rgb(25 7 56)";
     document.body.style.color ="white";    
     alertNotify("Dark mode has been enabled","success");
+    
   }
    else{
     setMode('light');
@@ -34,19 +40,30 @@ function App() {
     document.body.style.color ="black"; 
     document.querySelector("h2").style.color="black";
     alertNotify("Light mode has been enabled","success");
-   }
+      
+  }
   }
   return (
     <div className={`App ${mode1}`}>
-     <div>
-     
+    
+    <Router>
       <Navbar title="TextAnalyser" hometext="Home" abouttext="About us" mode={mode1} toggleMode={darkMode}/>
       <Alert alert={alert}/>
       <div className="container my-3">
-      <Textfrom heading= "Enter the text to analyse" mode={mode1} showAlert={alertNotify}/>
+      <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+         
+          <Route path="/">
+          <Textfrom heading= "Enter the text to analyse" mode={mode1} showAlert={alertNotify}/>
+   
+          </Route>
+        </Switch>
+        
       </div>
-      <About/>
-       </div>
+      
+      </Router> 
     </div>
   );
 }
