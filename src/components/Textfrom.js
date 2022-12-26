@@ -7,14 +7,17 @@ export default function Textfrom(props) {
   let updateText1 =() =>{
    let rex=text.toUpperCase();
    newText(rex);
+   props.showAlert("Converted to UpperCase","success")
   }
 
   let updateText2 =() =>{
     let rex=text.toLowerCase();
     newText(rex); 
+    props.showAlert("Coverted to LowerCase","success")
    }
    let updateText3 =() =>{
     newText(" ")
+    props.showAlert("cleared","success")
    }
   const handleOnChange =(event) =>{
     console.log("On change");
@@ -27,7 +30,7 @@ export default function Textfrom(props) {
     <div className="container" style={{color: props.mode==='light'?'black':'white'}}>
         <h1>{props.heading}</h1>
     <div className="mb-3">
-     <textarea className="form-control" style={{backgroundColor: props.mode==='light'?'white':'grey' , color: props.mode==='light'?'black':'white'}} id="exampleFormControlTextarea1" rows="8" value={text} onChange={handleOnChange}></textarea>
+     <textarea className="form-control" style={{backgroundColor: props.mode==='light'?'white':'rgb(49 16 96)' , color: props.mode==='light'?'black':'white'}} id="exampleFormControlTextarea1" rows="8" value={text} onChange={handleOnChange}></textarea>
     </div>
     <button className="btn btn-primary" onClick={updateText1}>Convert to upper case</button>
     <button className="btn btn-primary mx-3" onClick={updateText2}>Convert to lower case</button>
