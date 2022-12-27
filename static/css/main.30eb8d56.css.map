@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.30eb8d56.css","mappings":"AAAA,MAEI,kCAAmC,CADnC,aAEJ","sources":["App.css"],"sourcesContent":[".dark{\n    color : \"white\";\n    background-color: \"rgb(36, 35, 35)\";\n}"],"names":[],"sourceRoot":""}
