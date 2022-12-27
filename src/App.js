@@ -44,21 +44,24 @@ function App() {
   }
   }
   return (
-    <div className={`App ${mode1}`}>
     
+    <>
     <Router>
+    {/* /users --->- Component-1
+    /users/home-->--->-Component 2*/}
+      <div className={`App ${mode1}`}>
       <Navbar title="TextAnalyser" hometext="Home" abouttext="About us" mode={mode1} toggleMode={darkMode}/>
       <Alert alert={alert}/>
       <div className="container my-3">
       <Routes>
-        <Route path="/about" element={<About/>} />
-        <Route path="/" element={   <Textfrom heading= "Enter the text to analyse" mode={mode1} showAlert={alertNotify}/>
+        <Route exact path="/about" element={<About/>} />
+        <Route exact path="/" element={   <Textfrom heading= "Enter the text to analyse" mode={mode1} showAlert={alertNotify}/>
      } />
       </Routes>
       </div>
-      
+      </div>
       </Router> 
-    </div>
+      </>
   );
 }
 
